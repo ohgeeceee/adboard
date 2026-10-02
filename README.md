@@ -1,5 +1,7 @@
 # AdBoard — Landing Page
 
+[Live demo](https://ohgeeceee.github.io/adboard/) · [GitHub repository](https://github.com/ohgeeceee/adboard)
+
 Self-serve digital billboard advertising. Scan a QR code, design on your phone, pay, go live.
 
 ## Stack
@@ -9,7 +11,7 @@ Self-serve digital billboard advertising. Scan a QR code, design on your phone, 
 - Framer Motion for scroll reveals, beam packets, and accordion height animation
 - Lucide React icons
 
-## Run it
+## Run it locally
 
 ```bash
 npm install
@@ -65,7 +67,11 @@ PLAYWRIGHT_BROWSERS_PATH=/opt/playwright python3 verify.py
 `prefers-reduced-motion` disables the float, scanline, packets and pulse. Swatches are
 labelled buttons with `aria-pressed`; FAQ rows use `aria-expanded`.
 
-## Known gaps
+## Deployment
 
-Copy and links are placeholders — `#map`, `#owners` and most footer links point at
-on-page anchors. Wire them to the real map, checkout and legal pages before launch.
+The `main` branch is deployed automatically to GitHub Pages by
+`.github/workflows/deploy-pages.yml`. The Next.js app uses static export mode so the
+demo works on Pages without a server runtime.
+
+The map, checkout, and owner onboarding are represented as demo sections in this
+prototype; connect them to production services before launch.
