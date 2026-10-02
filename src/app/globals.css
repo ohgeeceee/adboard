@@ -99,6 +99,19 @@ body {
   animation: floaty 7s ease-in-out infinite;
 }
 
+.beacon-stage {
+  isolation: isolate;
+}
+
+.beacon-aura {
+  animation: beacon-glow 3.8s ease-in-out infinite;
+}
+
+@keyframes beacon-glow {
+  0%, 100% { transform: scale(0.88); opacity: 0.45; }
+  50% { transform: scale(1.08); opacity: 0.8; }
+}
+
 @keyframes floaty {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-14px); }
@@ -117,7 +130,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .float-slow, .scanline::before, .packet, .pulse-ring {
+  .float-slow, .beacon-aura, .scanline::before, .packet, .pulse-ring {
     animation: none !important;
   }
   html { scroll-behavior: auto; }

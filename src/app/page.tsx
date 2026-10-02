@@ -18,7 +18,7 @@ import {
   Wallet,
 } from "lucide-react";
 import { AdCreative, Beam, Billboard, PhoneMockup } from "../components/billboard";
-import { GradientButton, Reveal, SectionLabel } from "../components/primitives";
+import { BeaconMascot, GradientButton, Reveal, SectionLabel } from "../components/primitives";
 import { Simulator } from "../components/simulator";
 
 /* ----------------------------- nav ----------------------------- */
@@ -135,11 +135,19 @@ function Hero() {
                 ))}
               </dl>
             </Reveal>
+
+            <Reveal delay={0.3}>
+              <div className="mt-10 flex items-center gap-3 text-xs text-white/45">
+                <div className="h-px w-8 bg-cyan-300/40" />
+                Meet Beacon — your ad’s signal to the city.
+              </div>
+            </Reveal>
           </div>
 
           {/* visual: phone -> beam -> billboard */}
           <Reveal delay={0.2} y={30}>
             <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-center sm:gap-4">
+              <BeaconMascot />
               <div className={reduce ? "" : "float-slow"}>
                 <PhoneMockup className="w-[186px] sm:w-[200px] lg:w-[212px]" />
               </div>

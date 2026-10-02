@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 export function Reveal({
@@ -35,6 +36,38 @@ export function SectionLabel({ children }: { children: ReactNode }) {
       <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_2px_rgba(34,229,255,0.8)]" />
       {children}
     </span>
+  );
+}
+
+export function BeaconMascot() {
+  const reduce = useReducedMotion();
+  return (
+    <div className="beacon-stage relative mx-auto w-[190px] sm:w-[220px]" aria-label="AdBoard Beacon mascot">
+      <div aria-hidden className="beacon-aura absolute inset-[12%] rounded-full bg-cyan-400/20 blur-3xl" />
+      <motion.div
+        className="relative z-10"
+        animate={reduce ? undefined : { y: [0, -12, 0], rotate: [0, 1.5, 0, -1.5, 0] }}
+        transition={reduce ? undefined : { duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Image
+          src="/mascot/adboard-beacon.png"
+          alt="AdBoard Beacon, the friendly billboard bot"
+          width={1145}
+          height={1374}
+          priority
+          className="h-auto w-full drop-shadow-[0_24px_35px_rgba(34,229,255,0.24)]"
+        />
+      </motion.div>
+      <motion.div
+        aria-hidden
+        className="beacon-orbit absolute bottom-[3%] left-1/2 h-5 w-[78%] -translate-x-1/2 rounded-[50%] border border-cyan-300/60 bg-cyan-300/10 blur-[1px]"
+        animate={reduce ? undefined : { scaleX: [0.86, 1, 0.86], opacity: [0.45, 0.9, 0.45] }}
+        transition={reduce ? undefined : { duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <span className="absolute -right-5 top-[14%] rounded-full border border-cyan-300/20 bg-[#07131c]/80 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-cyan-200 backdrop-blur">
+        Beacon online
+      </span>
+    </div>
   );
 }
 
