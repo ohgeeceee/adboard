@@ -50,7 +50,7 @@ export function BeaconMascot() {
         transition={reduce ? undefined : { duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
       >
         <Image
-          src="/mascot/adboard-beacon.png"
+          src="/adboard/mascot/adboard-beacon.png"
           alt="AdBoard Beacon, the friendly billboard bot"
           width={1145}
           height={1374}
