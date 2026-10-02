@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #05060a;
+  --color-ink-2: #0a0c14;
+  --color-neon-blue: #2f6bff;
+  --color-neon-cyan: #22e5ff;
+  --color-neon-violet: #a855f7;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  /* decorative glows are intentionally wider than the viewport; `clip` trims the
+     horizontal scrollbar without creating a scroll container, so the sticky nav,
+     anchor scrolling and position:sticky keep working (`hidden` would break them). */
+  overflow-x: clip;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: #e6e9f2;
+  -webkit-font-smoothing: antialiased;
+}
+
+.glow-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, #ffffff 10%, #9ec5ff 45%, var(--color-neon-cyan) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hairline {
+  background: linear-gradient(90deg, transparent, rgba(120, 160, 255, 0.35), transparent);
+}
+
+.led-screen {
+  position: relative;
+  container-type: inline-size;
+  background-image:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.16) 0.6px, transparent 0.9px),
+    radial-gradient(circle at center, rgba(0, 0, 0, 0.35) 0.7px, transparent 1px);
+  background-size: 4px 4px, 4px 4px;
+  background-position: 0 0, 2px 2px;
+}
+
+.led-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.14), transparent 42%, rgba(255, 255, 255, 0.08));
+  pointer-events: none;
+}
+
+.scanline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 22%;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.07), transparent);
+  animation: scan 5.5s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes scan {
+  0% { top: -25%; }
+  100% { top: 105%; }
+}
+
+.pulse-ring {
+  animation: pulsering 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulsering {
+  0% { transform: scale(0.85); opacity: 0.7; }
+  70% { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+.float-slow {
+  animation: floaty 7s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+.packet {
+  animation: travel var(--dur, 2.2s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes travel {
+  0% { left: 0%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-slow, .scanline::before, .packet, .pulse-ring {
+    animation: none !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+details.faq > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details.faq > summary::-webkit-details-marker {
+  display: none;
+}
+
+::selection {
+  background: var(--color-neon-cyan);
+  color: #04121a;
+}
