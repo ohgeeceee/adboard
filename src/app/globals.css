@@ -25,6 +25,34 @@ body {
   overflow-x: clip;
 }
 
+label {
+  display: block;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+label input,
+label select {
+  display: block;
+  width: 100%;
+  margin-top: 0.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.75rem 0.875rem;
+  color: white;
+  outline: none;
+}
+
+label input:focus,
+label select:focus {
+  border-color: rgba(34, 229, 255, 0.7);
+  box-shadow: 0 0 0 3px rgba(34, 229, 255, 0.12);
+}
+
+label select option { background: #0a0c14; }
+
 body {
   background-color: var(--color-ink);
   color: #e6e9f2;

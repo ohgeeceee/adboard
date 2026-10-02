@@ -43,10 +43,10 @@ function Nav() {
         </nav>
         <div className="flex items-center gap-2">
           <a
-            href="#owners"
+            href="/portal/register"
             className="hidden rounded-full border border-white/12 bg-white/5 px-4 py-2 text-[13px] font-medium text-white/80 transition hover:border-white/30 hover:text-white sm:inline-flex"
           >
-            List your screen
+            Owner portal
           </a>
           <a
             href="#map"
@@ -110,7 +110,7 @@ function Hero() {
                   Find a Billboard Near You
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </GradientButton>
-                <GradientButton href="#owners" variant="ghost">
+                <GradientButton href="/portal/register" variant="ghost">
                   <Plus className="h-4 w-4" />
                   List Your Screen
                 </GradientButton>
@@ -552,7 +552,7 @@ export default function Page() {
               collection and moderation — you collect the revenue on an empty loop.
             </p>
             <div className="relative mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <GradientButton href="#top">
+              <GradientButton href="/portal/register">
                 <Plus className="h-4 w-4" />
                 List Your Screen
               </GradientButton>
