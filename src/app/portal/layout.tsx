@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, Monitor, Megaphone, Wallet, Settings, LogOut, ExternalLink, ImagePlus, ShoppingBag, Wrench, Headphones } from "lucide-react";
+import { LayoutDashboard, Monitor, Megaphone, Wallet, Settings, LogOut, ExternalLink, ImagePlus, ShoppingBag, Wrench, Headphones, BookOpen, MessagesSquare } from "lucide-react";
 
 const nav = [
   ["/portal", "Overview", LayoutDashboard],
@@ -13,6 +13,8 @@ const nav = [
   ["/portal/marketplace", "Buy screens", ShoppingBag],
   ["/portal/hardware", "Hardware & software", Wrench],
   ["/portal/support", "Tech support", Headphones],
+  ["/portal/docs", "Docs & guides", BookOpen],
+  ["/portal/forum", "Community forum", MessagesSquare],
   ["/portal/payouts", "Payouts", Wallet],
   ["/portal/settings", "Settings", Settings],
 ] as const;
