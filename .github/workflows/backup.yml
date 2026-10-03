@@ -1,0 +1,48 @@
+name: Backup AdBoard
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: adboard-backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out complete repository history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create source archive and Git bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          stamp="$(date -u +%Y%m%dT%H%M%SZ)"
+          mkdir -p backup
+          git bundle create "backup/adboard-${stamp}.bundle" --all
+          tar \
+            --exclude='./.git' \
+            --exclude='./node_modules' \
+            --exclude='./.next' \
+            --exclude='./out' \
+            --exclude='./backup' \
+            -czf "backup/adboard-source-${stamp}.tar.gz" .
+          git log -1 --format='%H%n%aI%n%s' > "backup/HEAD-${stamp}.txt"
+          sha256sum backup/* > "backup/SHA256SUMS-${stamp}.txt"
+
+      - name: Upload encrypted-by-GitHub backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: adboard-backup-${{ github.run_id }}
+          path: backup/
+          if-no-files-found: error
+          retention-days: 90
+

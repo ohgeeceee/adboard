@@ -75,3 +75,16 @@ demo works on Pages without a server runtime.
 
 The map, checkout, and owner onboarding are represented as demo sections in this
 prototype; connect them to production services before launch.
+
+## Backups
+
+`.github/workflows/backup.yml` runs every day at 03:17 UTC and can also be started
+manually from the Actions tab. Each run stores a 90-day GitHub artifact containing:
+
+- a complete Git bundle with all repository history and refs;
+- a source/assets archive including the Pages workflow and configuration;
+- the backed-up commit identifier and a SHA-256 checksum manifest.
+
+Download the latest artifact from **Actions → Backup AdBoard** and keep a copy
+outside GitHub for disaster recovery. Browser-local demo uploads are not included;
+they need cloud storage and a database before they can be backed up centrally.
