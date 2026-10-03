@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, Monitor, Megaphone, Wallet, Settings, LogOut, ExternalLink } from "lucide-react";
+import { LayoutDashboard, Monitor, Megaphone, Wallet, Settings, LogOut, ExternalLink, ImagePlus } from "lucide-react";
 
 const nav = [
   ["/portal", "Overview", LayoutDashboard],
   ["/portal/screens", "My screens", Monitor],
   ["/portal/campaigns", "Campaigns", Megaphone],
+  ["/portal/creative", "Creative library", ImagePlus],
   ["/portal/payouts", "Payouts", Wallet],
   ["/portal/settings", "Settings", Settings],
 ] as const;
